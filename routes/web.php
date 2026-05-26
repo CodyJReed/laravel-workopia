@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -10,25 +10,20 @@ Route::get('/', function () {
 Route::get('/jobs', function () {
     return '<h1>Available Jobs.</h1>';
 });
-
-
-// Exercise with $request class
-Route::get('/tests', function (Request $request) {
-    return [
-        'method' => $request->method(),
-        'url' => $request->url(),
-        'path' => $request->path(),
-        'fullUrl' => $request->fullUrl(),
-        'ip' => $request->ip(),
-        'userAgent' => $request->userAgent(),
-        'header' => $request->header(),
-    ];
+// Response class/response helper exercise
+Route::get('/text', function() {
+    return response()->json([
+        'title' => 'test'
+    ], 201)->cookie('name', 'jane doe');
 });
-// Query params exercise
-Route::get('/query', function (Request $request) {
-    // ($query) | only($query) | all() |
-    //  has($query) |
-    //  input($query) <- works with forms && requests
-    // except($query) <- filter out provide array
-    return $request->all();
+// Downloads
+Route::get('/download', function() {
+    return response()->download(public_path('favicon.ico'));
+});
+// Cookie retrieval
+Route::get('/read-cookie', function(Request $request) {
+    $cookieValue = $request->cookie('name');
+    return response()->json([
+        'cookie' => $cookieValue
+    ]);
 });
