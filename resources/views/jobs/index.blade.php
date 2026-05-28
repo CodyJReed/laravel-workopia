@@ -11,11 +11,15 @@
     <title>Job Listings</title>
 </head>
 <body>
-    <h1><?= $title ?></h1>
+    <h1>{{$title}}</h1>
+    @if(!empty($jobs))
     <ul>
-        <?php foreach ($jobs as $job) : ?>
-            <li><?= $job ?></li>
-        <?php endforeach ?>
+        @foreach($jobs as $job)
+            <li>{{$job}}</li>
+        @endforeach
     </ul>
+    @else
+    <p>None</p>
+    @endif
 </body>
 </html>
