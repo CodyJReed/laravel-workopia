@@ -3,48 +3,70 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class JobController extends Controller
 {
-    public function index()
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(): View
     {
-        $title = 'Available Jobs.';
         $jobs = [
-            'Software Dev',
-            'DB Admin',
-            'Software Eng',
-            'Systems Analyst'
+            "Web Developer",
+            "DB Admin",
+            "Software Engineer",
+            "Systems Analyst"
         ];
-        // Data/State can be pass to templates/pages in a variaty of different ways...
-        // As an associative_array within the 'view' method
 
-        // return view('jobs.index', [
-        //     'title' => $title
-        // ]);
-
-        // ...as comma separated pairs attached to a 'with' method of view
-        // return view('jobs.index')->with('title', $title);
-
-        //...using the compact method with the 'view' method
-        return view('jobs.index', compact('title', 'jobs'));
+        return view('jobs.index', compact('jobs'));
     }
 
-    public function create()
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create(): View
     {
         return view('jobs.create');
     }
 
-    public function show(string $id)
-    {
-
-        return "Showing Job $id";
-    }
-
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
-        $title = $request->input('title');
-        $description = $request->input('description');
+        return 'Store';
+    }
 
-        return "$title : $description";
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id): string
+    {
+        return 'Show';
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id): string
+    {
+        return 'Edit';
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id): string
+    {
+        return 'Update';
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id): string
+    {
+        return 'Destroy';
     }
 }
