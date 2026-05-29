@@ -1,10 +1,5 @@
-@extends('layout')
-
-@section('title')
-Create Jobs
-@endsection
-
-@section('content')
+<x-layout>
+    <x-slot name="title">Laravel | Create Job</x-slot>
     <h1>Job Creation</h1>
     <form action="/jobs" method="POST">
         @csrf
@@ -12,4 +7,4 @@ Create Jobs
         <input name="description" placeholder="description" />
         <button type="submit">Submit</button>
     </form>
-@endsection
+</x-layout>
