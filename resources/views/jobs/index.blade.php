@@ -1,23 +1,12 @@
-<?php
-/** @var string $title @var array $jobs */
-?>
+@extends('layout')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Job Listings</title>
-</head>
-<body>
-    <h1>Available Jobs</h1>
-    <ul>
-        @forelse($jobs as $job)
-            <li>{{$job}}</li>
-        @empty
+@section('content')
+<h1>Available Jobs</h1>
+<ul>
+    @forelse($jobs as $job)
+        <li>{{ $job }}</li>
+    @empty
         <li>No jobs available</li>
-        @endforelse
-    </ul>
-</body>
-</html>
+    @endforelse
+</ul>
+@endsection
