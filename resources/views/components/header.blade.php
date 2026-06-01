@@ -5,15 +5,16 @@
              <a href="{{ url('/') }}">Workopia</a>
          </h1>
          <nav class="hidden md:flex items-center space-x-4">
-            <x-link url="/jobs" :active="request()->is('jobs')">All Jobs</x-link>
-            <x-link url="/jobs/saved" :active="request()->is('jobs.saved')">Saved Jobs</x-link>
-            <x-link url="/login" :active="request()->is('login')">Login</x-link>
+             <x-link url="/jobs" :active="request()->is('jobs')">All Jobs</x-link>
+             <x-link url="/jobs/saved" :active="request()->is('jobs.saved')">Saved Jobs</x-link>
+             <x-link url="/login" :active="request()->is('login')">Login</x-link>
              <x-link url="/register" :active="request()->is('register')">Register</x-link>
              <x-link url="/dashboard" :active="request()->is('dashboard')" icon="gauge">Dashboard</x-link>
-             <a href="{{ '/jobs/create' }}"
-                 class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded hover:shadow-md transition duration-300 ">
-                 <i class="fa fa-edit"></i> Create Job
-             </a>
+             <x-button-link url="/jobs/create"
+                 twcss="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded hover:shadow-md transition duration-300"
+                 icon="edit">
+                 Create Job
+                 </x-button0link>
          </nav>
          <button id="hamburger" class="text-white md:hidden flex items-center">
              <i class="fa fa-bars text-2xl"></i>
@@ -26,7 +27,7 @@
          <a href="{{ url('/login') }}" class="block px-4 py-2 hover:bg-blue-700">Login</a>
          <a href="{{ url('/register') }}" class="block px-4 py-2 hover:bg-blue-700">Register</a>
          <a href="{{ url('/dashboard') }}" class="block text-white hover:underline py-2">
-         Dashboard
+             Dashboard
          </a>
          <a href="{{ url('/jobs/create') }}" class="block px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-black">
              <i class="fa fa-edit"></i> Create Job
