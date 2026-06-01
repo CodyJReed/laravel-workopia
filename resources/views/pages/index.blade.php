@@ -1,3 +1,5 @@
 <x-layout>
-    <p>Under construction</p>
+    <h1>Welcome To Workopia</h1>
+
+    <x-bottom-banner />
 </x-layout>
