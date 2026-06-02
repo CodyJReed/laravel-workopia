@@ -1,6 +1,6 @@
 @props(['job'])
 
-<div class="rounded-lg shadow-md bg-white p-4">
+<div class="rounded-lg shadow-md bg-white p-4 flex flex-col justify-between">
     <div class="flex items-center space-between gap-4">
         <img src="/images/{{ $job->company_logo }}" alt="{{ $job->company_name }}" class="w-14" />
         <div>
@@ -10,7 +10,7 @@
             <p class="text-sm text-gray-500">{{ $job->job_type }}</p>
         </div>
     </div>
-    <p class="text-gray-700 text-lg mt-2">
+    <p class="text-gray-700 text-lg mt-2 flex-1">
         {{ $job->description }}
     </p>
     <ul class="my-4 bg-gray-100 p-4 rounded">
