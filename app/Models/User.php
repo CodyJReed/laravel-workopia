@@ -33,6 +33,6 @@ class User extends Authenticatable
 
     // Relate to job listing
     public function jobListings(): HasMany {
-        return $this->hasMany(JobListing::class);
+        return $this->hasMany(Job::class);
     }
 }
