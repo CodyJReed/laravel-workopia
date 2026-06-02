@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Job extends Model
 {
     protected $table = 'job_listings';
@@ -26,6 +27,12 @@ class Job extends Model
         'company_name',
         'company_description',
         'company_logo',
-        'company_website'
+        'company_website',
+        'user_id'
     ];
+
+    // Relation to user
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
