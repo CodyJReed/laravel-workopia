@@ -33,6 +33,7 @@ class JobController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
@@ -56,7 +57,14 @@ class JobController extends Controller
 
         // TODO remove later upon auth
         $validatedData['user_id'] = 1;
+        if ($request->hasFile('company_logo')) {
+            // Store file and retreive path
+            $path = $request->file('company_logo')->store('logos', 'public');
 
+            // Add path to validated data
+            $validatedData['company_logo'] = $path;
+        }
+        // Submit to database
         Job::create($validatedData);
 
         return redirect()->route('jobs.index')->with('success', 'Job listing created successfully!');
