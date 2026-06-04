@@ -58,7 +58,7 @@
             <x-inputs.text-area id="company_description" label="Company Description" name="company_description"
                 rows="2" placeholder="Company description" />
             {{-- Company Website --}}
-            <x-inputs.text id="company_website" label="Company Website" name="company_website"
+            <x-inputs.text id="company_website" label="Company Website" name="company_website" type="url"
                 placeholder="Company website" />
             {{-- Contact Phone --}}
             <x-inputs.text id="contact_phone" label="Contact Phone" name="contact_phone" placeholder="Contact phone" />
