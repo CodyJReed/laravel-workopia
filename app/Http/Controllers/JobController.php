@@ -55,8 +55,8 @@ class JobController extends Controller
             'company_website' => 'nullable|url'
         ]);
 
-        // TODO remove later upon auth
-        $validatedData['user_id'] = 1;
+        
+        $validatedData['user_id'] = auth()->user()->id;
         if ($request->hasFile('company_logo')) {
             // Store file and retreive path
             $path = $request->file('company_logo')->store('logos', 'public');
