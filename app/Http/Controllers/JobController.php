@@ -57,7 +57,7 @@ class JobController extends Controller
             'company_website' => 'nullable|url'
         ]);
 
-        
+
         $validatedData['user_id'] = auth()->user()->id;
         if ($request->hasFile('company_logo')) {
             // Store file and retreive path
@@ -86,9 +86,9 @@ class JobController extends Controller
      */
     public function edit(Job $job): View
     {
-         // Check if user is authorized
+        // Check if user is authorized
         $this->authorize('update', $job);
-        
+
         return view('jobs.edit')->with('job', $job);
     }
 
@@ -141,7 +141,7 @@ class JobController extends Controller
      */
     public function destroy(Job $job): RedirectResponse
     {
-         // Check if user is authorized
+        // Check if user is authorized
         $this->authorize('delete', $job);
         // If logo, then delete it
         if ($job->company_logo) {
@@ -149,6 +149,11 @@ class JobController extends Controller
         }
 
         $job->delete();
+
+        // Check where request originated
+        if (request()->query('from') == 'dashboard') {
+            return redirect()->route('dashboard')->with('success', 'Job listing updated successfully!');
+        }
 
         return redirect()->route('jobs.index')->with('success', 'Job listing updated successfully!');
     }
