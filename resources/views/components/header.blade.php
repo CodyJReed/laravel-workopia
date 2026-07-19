@@ -8,9 +8,17 @@
              <x-link url="/jobs" :active="request()->is('jobs')">All Jobs</x-link>
              @auth
                  <x-link url="/jobs/saved" :active="request()->is('jobs.saved')">Saved Jobs</x-link>
-                 <x-link url="/dashboard" :active="request()->is('dashboard')" icon="gauge">Dashboard</x-link>
                  <x-logout-button />
-                 <x-button-link url="/jobs/create"
+                 <div class="flex items-center space-x-3">
+                    <a href="{{route('dashboard')}}">
+                        @if (Auth::user()->avatar)
+                            <img src="{{asset('storage/'. Auth::user()->avatar)}}" alt="{{Auth::user()->name}}" class="w-10 h-10 rounded-full">
+                        @else
+                            <img src="{{asset('storage/avatars/default-avatar.png')}}" alt="Default avatar" class="w-10 h-10 rounded-full">
+                        @endif
+                    </a>
+                 </div>
+                  <x-button-link url="/jobs/create"
                      twcss="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded hover:shadow-md transition duration-300"
                      icon="edit">
                      Create Job
