@@ -7,7 +7,7 @@
          <nav class="hidden md:flex items-center space-x-4">
              <x-link url="/jobs" :active="request()->is('jobs')">All Jobs</x-link>
              @auth
-                 <x-link url="/jobs/saved" :active="request()->is('jobs.saved')">Saved Jobs</x-link>
+                 <x-link url="/bookmarks" :active="request()->is('jobs.saved')">Saved Jobs</x-link>
                  <x-logout-button />
                  <div class="flex items-center space-x-3">
                     <a href="{{route('dashboard')}}">
@@ -38,7 +38,7 @@
          <x-link url="/jobs" :active="request()->is('jobs')" :mobile="true">All
              Jobs</x-link>
          @auth
-             <x-link url="/jobs/saved" :active="request()->is('jobs.saved')" :mobile="true">
+             <x-link url="/bookmarks" :active="request()->is('jobs.saved')" :mobile="true">
                  Saved Jobs</x-link>
              <x-link url="/dashboard" :active="request()->is('dashboard')" :mobile="true">
                  Dashboard</x-link>
