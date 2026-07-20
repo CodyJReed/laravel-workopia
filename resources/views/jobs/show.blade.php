@@ -75,14 +75,8 @@
                 </p>
             </div>
             @auth
-            <div x-data="{ open: false }">
-                <button @click="open = true"
-                    class="block w-full text-center px-5 py-2.5 shadow-sm rounded border text-base font-medium cursor-pointer text-indigo-700 bg-indigo-100 hover:bg-indigo-200">
-                    Apply Now
-                </button>
-                <div class="fixed inset-0 flex items-center justify-center bg-gray-900/50" x-show="open">
-                    <div @click.away="open = false" class="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
-                        <h3 class="text-lg font-semibold mb-4">
+            <x-modal buttonText="Apply Now">
+              <h3 class="text-lg font-semibold mb-4">
                             Apply For {{ $job->title }}
                         </h3>
                         <form action="" enctype="multipart/form-data" class="">
@@ -99,11 +93,8 @@
                             Cancel
                         </button>
 
-                        </form>
-                        
-                    </div>
-                </div>
-            </div>
+                        </form>  
+            </x-modal>
             @else
             <p class="my-5 bg-gray-200 rounded p-3">
               <i class="fas fa-info-circle mr-3"></i>  Log in to apply.
