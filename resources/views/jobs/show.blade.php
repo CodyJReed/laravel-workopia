@@ -112,11 +112,14 @@
                 You must be logged in to bookmark a job.
             </p>
         @else
-            <form action="{{ route('bookmarks.store', $job->id) }}" method="POST" class="mt-10">
+            <form action="{{!auth()->user()->bookmarkedJobs()->where('job_id', $job->id)->exists() ? route('bookmarks.store', $job->id) : route('bookmarks.destroy', $job->id) }}" method="POST" class="mt-10">
                 @csrf
+                @if (auth()->user()->bookmarkedJobs()->where('job_id', $job->id)->exists())
+                @method('DELETE')
+                @endif
                 <button
-                    class="bg-blue-500 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center hover:bg-blue-600">
-                    <i class="fas fa-bookmark mr-3"></i> Bookmark Listing
+                    class="{{!auth()->user()->bookmarkedJobs()->where('job_id', $job->id)->exists() ? 'bg-blue-500 hover:bg-blue-600' : 'bg-red-500 hover:bg-red-600'}} text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center">
+                    <i class="fas fa-bookmark mr-3"></i> {{!auth()->user()->bookmarkedJobs()->where('job_id', $job->id)->exists() ? 'Bookmark Listing' : 'Remove Bookmark'}}
                 </button>
             </form>
         @endguest
