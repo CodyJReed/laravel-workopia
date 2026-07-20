@@ -21,7 +21,7 @@
         <li class="mb-2">
             <strong>Location:</strong> {{ $job->city }}, {{ $job->state }}
             <span
-                class="text-xs bg-red-500 text-white rounded-full px-2 py-1 ml-2">{{ $job->remote ? 'Remote' : 'On-site' }}</span>
+                class="text-xs {{$job->remote ? 'bg-green-500' :'bg-red-500'}} text-white rounded-full px-2 py-1 ml-2">{{ $job->remote ? 'Remote' : 'On-site' }}</span>
         </li>
         @if ($job->tags)
             <li class="mb-2">
