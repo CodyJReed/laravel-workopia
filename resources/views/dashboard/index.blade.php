@@ -8,7 +8,7 @@
 
             @if ($user->avatar)
                 <div class="mt-2 flex justify-center">
-                    <img src="{{ asset('storage/' . $user->avatar) }}" alt="{{$user->name}}"
+                    <img src="{{ asset('storage/' . $user->avatar) }}" alt="{{ $user->name }}"
                         class="w-32 h-32 object-cover rounded-full">
                 </div>
             @endif
@@ -56,6 +56,34 @@
                         </form>
                         <!-- End Delete Form -->
                     </div>
+                </div>
+                {{-- Applicants --}}
+                <div class="mt-4">
+                    <h4 class="text-lg font-semibold mb-2">Applicants</h4>
+                    @forelse($job->applicants as $applicant)
+                        <div class="py-2">
+                            <p class="text-gray-800">
+                                <strong>Name: {{ $applicant->full_name }}</strong>
+                            </p>
+                            <p class="text-gray-800">
+                                <strong>Phone: {{ $applicant->contact_phone }}</strong>
+                            </p>
+                            <p class="text-gray-800">
+                                <strong>Email: {{ $applicant->contact_email }}</strong>
+                            </p>
+                            <p class="text-gray-800">
+                                <strong>Message: {{ $applicant->message }}</strong>
+                            </p>
+                            <p class="text-gray-800 my-4">
+                                <a href="{{ asset('storage/' . $applicant->resume_path) }}" download=""
+                                    class="text-blue-500 hover:underline">
+                                    <i class="fas fa-download"></i> Download Resume
+                                </a>
+                            </p>
+                        </div>
+                    @empty
+                        <p class="test-gray-700">No applicants for the job.</p>
+                    @endforelse
                 </div>
             @empty
                 <p class="text-gray-700">You have no job listings</p>
